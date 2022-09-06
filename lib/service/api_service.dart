@@ -39,6 +39,7 @@ class ApiService {
       Response response;
       if (headers != null) {
         dio.options.headers = headers;
+        dio.options.contentType = 'form-data';
       }
       response = await dio.get(
         endpoint,

@@ -1,5 +1,5 @@
 // ignore_for_file: avoid_print
-import 'package:cblaze/data/models/prefs.dart';
+import 'package:cblaze/data/prefs.dart';
 import 'package:cblaze/helpers/constants.dart';
 import 'package:cblaze/router/page_router.dart';
 import 'package:get/get_navigation/get_navigation.dart';

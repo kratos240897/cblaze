@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_print
 
-import 'package:cblaze/data/models/prefs.dart';
+import 'package:cblaze/data/prefs.dart';
 import 'package:cblaze/helpers/constants.dart';
 import 'package:cblaze/repo/app_repo.dart';
 import 'package:cblaze/router/page_router.dart';
@@ -10,7 +10,9 @@ import 'package:get/get_instance/get_instance.dart';
 import 'package:get/route_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SharedPrefHelper().init();
   Get.lazyPut(() => ApiService(), fenix: true);
   Get.lazyPut(() => AppRepo(), fenix: true);
   runApp(const MyApp());
@@ -32,8 +34,8 @@ class _MyAppState extends State<MyApp> {
     super.initState();
   }
 
-  checkLogin() async {
-    final token = await SharedPrefHelper().get(Constants.LOGIN_KEY);
+  checkLogin() {
+    final token = SharedPrefHelper().get(Constants.LOGIN_KEY);
     print('isLoggedIn $token');
     if (token != null && token.isNotEmpty) {
       isLoggedIn = true;
